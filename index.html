@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SchoolHub | منصتي الدراسية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+  <section id="setupScreen" class="setup-screen">
+    <div class="setup-card">
+      <div class="brand-mark">SH</div>
+      <span class="eyebrow">SCHOOLHUB</span>
+      <h1>منصتك الدراسية في مكان واحد</h1>
+      <p>اختاري صفك الدراسي علشان نجهزلك لوحة مناسبة لموادك ومسارك.</p>
+
+      <label>اسم الطالب</label>
+      <input id="studentName" type="text" placeholder="اكتبي اسمك">
+
+      <label>الصف الدراسي</label>
+      <select id="gradeSelect">
+        <option value="">اختاري الصف</option>
+        <option value="prep1">الصف الأول الإعدادي</option>
+        <option value="prep2">الصف الثاني الإعدادي</option>
+        <option value="prep3">الصف الثالث الإعدادي</option>
+        <option value="sec1">الصف الأول الثانوي</option>
+        <option value="sec2">الصف الثاني الثانوي — البكالوريا</option>
+        <option value="sec3">الصف الثالث الثانوي</option>
+      </select>
+
+      <div id="pathBox" class="hidden">
+        <label>المسار</label>
+        <select id="pathSelect">
+          <option value="">اختاري المسار</option>
+          <option value="life">طب وعلوم الحياة</option>
+          <option value="engineering">هندسة وعلوم الحاسب</option>
+          <option value="business">إدارة أعمال</option>
+          <option value="arts">آداب وفنون</option>
+        </select>
+      </div>
+
+      <div id="electiveBox" class="hidden">
+        <label>المادة الاختيارية</label>
+        <select id="electiveSelect"></select>
+      </div>
+
+      <div id="languageBox" class="hidden">
+        <label>اللغة الثانية</label>
+        <select id="languageSelect">
+          <option value="">اختاري اللغة</option>
+          <option>فرنساوي</option>
+          <option>ألماني</option>
+          <option>إيطالي</option>
+          <option>إسباني</option>
+        </select>
+      </div>
+
+      <button id="startBtn" class="primary-btn">ابدئي المنصة <span>←</span></button>
+      <p class="demo-note">نسخة تجريبية محلية — البيانات محفوظة على نفس الجهاز.</p>
+    </div>
+  </section>
+
+  <div id="app" class="app hidden">
+    <aside class="sidebar">
+      <div class="side-brand"><div class="brand-mark small">SH</div><div><strong>SchoolHub</strong><small>Student Space</small></div></div>
+      <nav>
+        <button class="nav-btn active" data-page="home">⌂ <span>الرئيسية</span></button>
+        <button class="nav-btn" data-page="planner">▦ <span>جدول المذاكرة</span></button>
+        <button class="nav-btn" data-page="tasks">✓ <span>قائمة المهام</span></button>
+        <button class="nav-btn" data-page="subjects">◈ <span>موادي</span></button>
+        <button class="nav-btn" data-page="progress">◔ <span>تقدمي</span></button>
+        <button class="nav-btn" data-page="notifications">♧ <span>الإشعارات</span><b id="notifBadge">3</b></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="profile-mini" id="profileBtn"><div class="avatar">S</div><div><strong id="sideName">الطالب</strong><small id="sideGrade">—</small></div><span>⚙</span></button>
+        <button id="logoutBtn" class="logout">↪ تغيير بيانات الطالب</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button id="mobileMenu" class="icon-btn">☰</button>
+        <div class="crumb">مساحتي الدراسية <span>/</span> <strong id="pageTitle">الرئيسية</strong></div>
+        <div class="top-actions">
+          <button class="icon-btn" data-page-jump="notifications">🔔<i id="topNotifDot"></i></button>
+          <div class="mini-avatar" id="topAvatar">S</div>
+        </div>
+      </header>
+
+      <div id="page-home" class="page active-page">
+        <section class="welcome-card">
+          <div>
+            <span class="eyebrow">GOOD TO SEE YOU</span>
+            <h2>أهلًا يا <span id="welcomeName">طالب</span> 👋</h2>
+            <p id="welcomeMeta">—</p>
+          </div>
+          <div class="welcome-art">✦</div>
+        </section>
+
+        <div class="section-heading"><div><h3>نظرة سريعة</h3><p>كل اللي يهمك النهارده في مكان واحد.</p></div></div>
+        <div class="stats-grid">
+          <div class="stat-card"><span>نسبة إنجاز المهام</span><strong id="taskProgressStat">0%</strong><em>من قائمة المهام</em></div>
+          <div class="stat-card"><span>موادك</span><strong id="subjectsCountStat">0</strong><em>مادة دراسية</em></div>
+          <div class="stat-card"><span>أيام الجدول</span><strong id="studyDaysStat">0</strong><em>يوم مذاكرة</em></div>
+          <div class="stat-card"><span>نقاط الإنجاز</span><strong id="pointsStat">0</strong><em>نقطة</em></div>
+        </div>
+
+        <div class="two-col">
+          <section class="panel">
+            <div class="panel-head"><div><h3>📌 مهامي</h3><p>الحاجات اللي محتاجة تخلصيها.</p></div><button class="text-btn" data-page-jump="tasks">عرض الكل</button></div>
+            <div id="homeTasks" class="list"></div>
+          </section>
+          <section class="panel">
+            <div class="panel-head"><div><h3>📅 جدولك الأسبوعي</h3><p>من غير مواعيد إجبارية.</p></div><button class="text-btn" data-page-jump="planner">تعديل</button></div>
+            <div id="homePlanner" class="mini-week"></div>
+          </section>
+        </div>
+
+        <section class="panel">
+          <div class="panel-head"><div><h3>🔔 آخر الإشعارات</h3><p>خليكي متابعة لكل جديد.</p></div><button class="text-btn" data-page-jump="notifications">كل الإشعارات</button></div>
+          <div id="homeNotifications" class="notification-list"></div>
+        </section>
+      </div>
+
+      <div id="page-planner" class="page">
+        <div class="page-header"><div><span class="eyebrow">WEEKLY PLANNER</span><h2>جدول المذاكرة الأسبوعي</h2><p>اختاري المواد لكل يوم براحتك. الوقت مش إجباري.</p></div><button id="savePlanner" class="primary-btn compact">حفظ الجدول</button></div>
+        <section class="panel planner-settings">
+          <div><div><h3>🌿 الجمعة إجازة؟</h3><p>لو فعلتيها، الجمعة هتظهر كيوم راحة ومش هتحتاجي تضيفي مواد.</p></div><label class="switch"><input id="fridayOff" type="checkbox"><span></span></label></div>
+        </section>
+        <div id="plannerGrid" class="planner-grid"></div>
+      </div>
+
+      <div id="page-tasks" class="page">
+        <div class="page-header"><div><span class="eyebrow">TO-DO</span><h2>قائمة المهام</h2><p>اكتبي كل حاجة عايزة تخلصيها، من غير ربطها بوقت محدد.</p></div><button id="addTaskBtn" class="primary-btn compact">+ مهمة جديدة</button></div>
+        <section class="task-summary"><div><span>إنجاز اليوم</span><strong id="taskBigProgress">0%</strong></div><div class="progress-track"><i id="taskBar"></i></div><span id="taskCountLabel">0 من 0 مكتملة</span></section>
+        <div class="task-layout"><section class="panel"><div class="panel-head"><h3>📋 المهام الحالية</h3></div><div id="taskList" class="task-list"></div></section><section class="panel completed-panel"><div class="panel-head"><h3>✓ مكتملة</h3></div><div id="completedList" class="task-list"></div></section></div>
+      </div>
+
+      <div id="page-subjects" class="page">
+        <div class="page-header"><div><span class="eyebrow">MY SUBJECTS</span><h2>موادي الدراسية</h2><p id="subjectsIntro">المواد الخاصة بصفك.</p></div></div>
+        <div id="subjectsGrid" class="subjects-grid"></div>
+      </div>
+
+      <div id="page-progress" class="page">
+        <div class="page-header"><div><span class="eyebrow">PROGRESS</span><h2>تقدمي الدراسي</h2><p>تابعي عاداتك وإنجازك بشكل بسيط.</p></div></div>
+        <div class="progress-hero panel"><div class="circle-progress"><span id="circleValue">0%</span></div><div><h3>مستوى التنظيم</h3><p>النسبة دي مبنية على إنجاز المهام وتعبئة جدول المذاكرة.</p><div class="progress-track large"><i id="mainProgressBar"></i></div></div></div>
+        <div class="achievement-grid"><div class="achievement"><b>✓</b><strong id="doneTasksAchievement">0</strong><span>مهمة مكتملة</span></div><div class="achievement"><b>▦</b><strong id="plannerAchievement">0</strong><span>أيام منظمة</span></div><div class="achievement"><b>★</b><strong id="pointsAchievement">0</strong><span>نقاط</span></div></div>
+      </div>
+
+      <div id="page-notifications" class="page">
+        <div class="page-header"><div><span class="eyebrow">UPDATES</span><h2>الإشعارات</h2><p>تنبيهات ومعلومات مهمة.</p></div></div>
+        <section class="panel"><div id="notificationsPage" class="notification-list"></div></section>
+      </div>
+    </main>
+  </div>
+
+  <div id="taskModal" class="modal hidden">
+    <div class="modal-card"><button class="modal-close" id="closeTaskModal">×</button><span class="eyebrow">NEW TASK</span><h2>إضافة مهمة</h2><label>اسم المهمة</label><input id="newTaskText" placeholder="مثلاً: مراجعة درس التاريخ"><label>اليوم</label><select id="newTaskDay"><option>السبت</option><option>الأحد</option><option>الاثنين</option><option>الثلاثاء</option><option>الأربعاء</option><option>الخميس</option><option>الجمعة</option></select><button id="confirmTask" class="primary-btn">إضافة المهمة</button></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

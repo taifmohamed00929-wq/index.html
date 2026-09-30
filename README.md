@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>SchoolHub | مدرسة الأورمان الإعدادية الثانوية بنات</title>
+<title>SchoolHub | منصتي الدراسية</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,1239 +11,2602 @@
 
 <style>
 :root{
-    --primary:#6658d9;
-    --primary2:#8779ed;
-    --pink:#e7a0cf;
-    --light:#f6f6fc;
-    --white:#fff;
-    --text:#252538;
-    --muted:#77788c;
-    --border:#e8e7f0;
-    --green:#55b98a;
-    --red:#df6c80;
-    --shadow:0 12px 35px rgba(57,48,120,.09);
-    --radius:22px;
+  --bg:#f7f8fc;
+  --card:#ffffff;
+  --primary:#6c63d9;
+  --primary2:#8179e8;
+  --text:#202336;
+  --muted:#777b91;
+  --border:#e8e9f1;
+  --success:#36a269;
+  --danger:#e05b68;
+  --shadow:0 12px 35px rgba(45,45,80,.08);
+  --radius:22px;
 }
 
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 body{
-    font-family:"Cairo",sans-serif;
-    background:var(--light);
-    color:var(--text);
+  font-family:"Cairo",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
 }
 
 button,input,select{
-    font-family:inherit;
+  font-family:inherit;
 }
 
 button{
-    cursor:pointer;
+  cursor:pointer;
+  border:0;
 }
 
 .hidden{
-    display:none!important;
+  display:none!important;
 }
 
 /* =========================
-   شاشة البداية
+   SETUP
 ========================= */
 
 .setup{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:25px;
-    background:
-        radial-gradient(circle at 10% 10%,#eadfff 0,transparent 32%),
-        radial-gradient(circle at 90% 90%,#ffe0f1 0,transparent 32%),
-        #f7f7fc;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  background:
+    radial-gradient(circle at 10% 20%,#e8e5ff 0,transparent 30%),
+    radial-gradient(circle at 90% 80%,#f4e0ff 0,transparent 30%),
+    var(--bg);
 }
 
-.setup-card{
-    width:100%;
-    max-width:650px;
-    background:#fff;
-    border-radius:32px;
-    padding:38px;
-    box-shadow:0 25px 80px rgba(55,45,120,.14);
+.setup-box{
+  width:100%;
+  max-width:720px;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:30px;
+  padding:42px;
+  box-shadow:var(--shadow);
 }
 
-.school-mark{
-    width:82px;
-    height:82px;
-    border-radius:25px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#fff;
-    font-size:35px;
-    font-weight:800;
-    background:linear-gradient(135deg,var(--primary),var(--pink));
+.logo{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:30px;
 }
 
-.school-title{
-    text-align:center;
-    font-size:21px;
-    font-weight:800;
-    margin-top:17px;
+.logo-icon{
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  background:linear-gradient(135deg,var(--primary),#a49df7);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  font-weight:800;
 }
 
-.platform-title{
-    text-align:center;
-    font-size:32px;
-    font-weight:800;
-    color:var(--primary);
+.logo h1{
+  font-size:25px;
 }
 
-.platform-subtitle{
-    text-align:center;
-    color:var(--muted);
-    margin:5px 0 28px;
+.logo p{
+  color:var(--muted);
+  font-size:13px;
 }
 
-.form-group{
-    margin-bottom:18px;
+.setup-title{
+  font-size:30px;
+  margin-bottom:8px;
 }
 
-.form-group label{
-    display:block;
-    font-size:14px;
-    font-weight:700;
-    margin-bottom:7px;
+.setup-subtitle{
+  color:var(--muted);
+  margin-bottom:28px;
 }
 
-.form-group input,
-.form-group select{
-    width:100%;
-    padding:14px 15px;
-    border:1px solid var(--border);
-    border-radius:14px;
-    background:#fafaff;
-    outline:none;
-    font-size:14px;
+.field{
+  margin-bottom:18px;
 }
 
-.form-group input:focus,
-.form-group select:focus{
-    border-color:var(--primary);
-    box-shadow:0 0 0 3px rgba(102,88,217,.1);
+.field label{
+  display:block;
+  font-weight:700;
+  margin-bottom:8px;
 }
 
-.primary-btn{
-    width:100%;
-    border:0;
-    border-radius:15px;
-    padding:14px 18px;
-    color:#fff;
-    font-size:15px;
-    font-weight:800;
-    background:linear-gradient(135deg,var(--primary),var(--primary2));
-    box-shadow:0 8px 20px rgba(102,88,217,.2);
-    transition:.2s;
+.field input,
+.field select{
+  width:100%;
+  padding:14px 16px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  outline:none;
+  background:#fbfbfe;
+  font-size:15px;
+  color:var(--text);
 }
 
-.primary-btn:hover{
-    transform:translateY(-2px);
+.field input:focus,
+.field select:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 4px rgba(108,99,217,.1);
 }
 
-.secondary-btn{
-    border:1px solid var(--border);
-    background:#fff;
-    color:var(--primary);
-    border-radius:12px;
-    padding:10px 15px;
-    font-weight:700;
+.start-btn{
+  width:100%;
+  padding:16px;
+  border-radius:15px;
+  color:white;
+  font-size:16px;
+  font-weight:800;
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  margin-top:8px;
+  transition:.2s;
+}
+
+.start-btn:hover{
+  transform:translateY(-2px);
 }
 
 /* =========================
-   التطبيق
+   APP
 ========================= */
 
 .app{
-    min-height:100vh;
+  min-height:100vh;
 }
 
 .sidebar{
-    position:fixed;
-    top:0;
-    right:0;
-    bottom:0;
-    width:275px;
-    background:#fff;
-    border-left:1px solid var(--border);
-    padding:23px 17px;
-    z-index:50;
+  position:fixed;
+  right:0;
+  top:0;
+  bottom:0;
+  width:260px;
+  background:white;
+  border-left:1px solid var(--border);
+  padding:24px 16px;
+  z-index:20;
 }
 
-.brand{
-    display:flex;
-    align-items:center;
-    gap:11px;
-    padding:7px 8px 22px;
-    border-bottom:1px solid var(--border);
+.side-logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:0 8px 24px;
+  border-bottom:1px solid var(--border);
 }
 
-.brand-mark{
-    width:48px;
-    height:48px;
-    border-radius:15px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,var(--primary),var(--pink));
-    color:#fff;
-    font-weight:800;
-    font-size:21px;
+.side-logo-icon{
+  width:43px;
+  height:43px;
+  border-radius:13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--primary);
+  color:white;
+  font-weight:800;
 }
 
-.brand strong{
-    display:block;
-    font-size:15px;
+.side-logo strong{
+  font-size:17px;
 }
 
-.brand small{
-    color:var(--muted);
-    font-size:10px;
+.side-logo small{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
 }
 
-.profile-card{
-    margin:18px 0;
-    padding:14px;
-    border-radius:17px;
-    background:#f7f6ff;
-}
-
-.profile-card strong{
-    display:block;
-    font-size:14px;
-}
-
-.profile-card span{
-    color:var(--muted);
-    font-size:11px;
-}
-
-.nav{
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-}
-
-.nav-btn{
-    width:100%;
-    border:0;
-    background:transparent;
-    padding:13px 14px;
-    border-radius:13px;
-    color:#66677b;
-    text-align:right;
-    font-size:14px;
-}
-
-.nav-btn:hover,
-.nav-btn.active{
-    background:#eeecff;
-    color:var(--primary);
-    font-weight:800;
-}
-
-.sidebar-bottom{
-    position:absolute;
-    right:17px;
-    left:17px;
-    bottom:22px;
-}
-
-.logout-btn{
-    width:100%;
-    border:0;
-    background:#fff0f3;
-    color:#c75f73;
-    padding:12px;
-    border-radius:13px;
-    font-weight:700;
-}
-
-.main{
-    margin-right:275px;
-    padding:22px 32px;
-}
-
-.topbar{
-    min-height:60px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:22px;
-}
-
-.topbar-right{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.mobile-menu{
-    display:none;
-    border:1px solid var(--border);
-    background:#fff;
-    border-radius:12px;
-    padding:9px 12px;
-    font-size:18px;
-}
-
-.page-title{
-    font-size:23px;
-}
-
-.top-actions{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.icon-btn{
-    width:43px;
-    height:43px;
-    border:1px solid var(--border);
-    background:#fff;
-    border-radius:13px;
-    position:relative;
-}
-
-.notification-dot{
-    position:absolute;
-    top:7px;
-    right:8px;
-    width:8px;
-    height:8px;
-    background:#e35f78;
-    border-radius:50%;
+.profile{
+  margin:18px 0;
+  padding:14px;
+  background:#f7f7fd;
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  gap:11px;
 }
 
 .avatar{
-    width:43px;
-    height:43px;
-    border-radius:13px;
-    background:linear-gradient(135deg,var(--primary),var(--pink));
-    color:#fff;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-weight:800;
+  width:43px;
+  height:43px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#e8e5ff;
+  color:var(--primary);
+  font-weight:800;
 }
 
-/* الصفحات */
+.profile strong{
+  font-size:13px;
+}
+
+.profile small{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+}
+
+.nav{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.nav button{
+  background:transparent;
+  text-align:right;
+  padding:12px 14px;
+  border-radius:13px;
+  color:#676b7e;
+  font-size:14px;
+  transition:.2s;
+}
+
+.nav button:hover{
+  background:#f5f4fd;
+  color:var(--primary);
+}
+
+.nav button.active{
+  background:#eeeafe;
+  color:var(--primary);
+  font-weight:800;
+}
+
+.side-bottom{
+  position:absolute;
+  bottom:20px;
+  left:16px;
+  right:16px;
+}
+
+.logout{
+  width:100%;
+  background:#fff0f1;
+  color:var(--danger);
+  padding:11px;
+  border-radius:12px;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+  margin-right:260px;
+  min-height:100vh;
+}
+
+.topbar{
+  height:76px;
+  background:white;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 35px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.topbar h2{
+  font-size:20px;
+}
+
+.top-actions{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.icon-btn{
+  width:42px;
+  height:42px;
+  border-radius:13px;
+  background:#f6f6fb;
+  color:#55596e;
+  font-size:18px;
+}
+
+.mobile-menu{
+  display:none;
+}
+
+.content{
+  padding:32px;
+  max-width:1400px;
+  margin:auto;
+}
+
+/* =========================
+   PAGE
+========================= */
 
 .page{
-    display:none;
+  display:none;
 }
 
 .page.active{
-    display:block;
+  display:block;
 }
 
-/* الرئيسية */
+/* =========================
+   HERO
+========================= */
 
-.welcome{
-    color:#fff;
-    padding:28px;
-    border-radius:25px;
-    background:linear-gradient(135deg,#6257d3,#9a8dec);
-    margin-bottom:20px;
-    box-shadow:var(--shadow);
+.hero{
+  background:linear-gradient(135deg,#6c63d9,#8981ed);
+  color:white;
+  border-radius:28px;
+  padding:32px;
+  position:relative;
+  overflow:hidden;
+  margin-bottom:24px;
 }
 
-.welcome h1{
-    font-size:27px;
+.hero:after{
+  content:"";
+  position:absolute;
+  width:250px;
+  height:250px;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  left:-70px;
+  top:-100px;
 }
 
-.welcome p{
-    margin-top:4px;
-    opacity:.9;
+.hero small{
+  opacity:.8;
 }
+
+.hero h1{
+  font-size:29px;
+  margin:5px 0;
+}
+
+.hero p{
+  opacity:.9;
+}
+
+/* =========================
+   STATS
+========================= */
 
 .stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-    margin-bottom:20px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-bottom:25px;
 }
 
 .stat{
-    background:#fff;
-    padding:20px;
-    border-radius:19px;
-    box-shadow:var(--shadow);
+  background:white;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 5px 20px rgba(30,30,70,.03);
 }
 
 .stat-icon{
-    font-size:22px;
+  font-size:22px;
+  margin-bottom:10px;
 }
 
 .stat strong{
-    display:block;
-    font-size:25px;
-    margin-top:5px;
+  display:block;
+  font-size:25px;
 }
 
 .stat span{
-    color:var(--muted);
-    font-size:12px;
+  color:var(--muted);
+  font-size:12px;
 }
 
-.dashboard-grid{
-    display:grid;
-    grid-template-columns:1.15fr .85fr;
-    gap:20px;
+/* =========================
+   GRID
+========================= */
+
+.two-col{
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:20px;
 }
 
 .card{
-    background:#fff;
-    border-radius:var(--radius);
-    padding:21px;
-    box-shadow:var(--shadow);
-    margin-bottom:20px;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:23px;
+  margin-bottom:20px;
 }
 
 .card-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-    margin-bottom:17px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
 }
 
 .card-head h3{
-    font-size:17px;
+  font-size:18px;
 }
 
-.small-btn{
-    border:0;
-    background:#efedff;
-    color:var(--primary);
-    border-radius:10px;
-    padding:8px 12px;
-    font-size:12px;
-    font-weight:800;
+.card-head button{
+  background:#eeeafe;
+  color:var(--primary);
+  padding:8px 12px;
+  border-radius:10px;
+  font-weight:700;
 }
 
-/* المهام */
+/* =========================
+   TASKS
+========================= */
 
-.task-row{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:12px 0;
-    border-bottom:1px solid var(--border);
+.task{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:13px 0;
+  border-bottom:1px solid #f0f0f5;
 }
 
-.task-row:last-child{
-    border-bottom:0;
+.task:last-child{
+  border-bottom:0;
 }
 
 .check{
-    flex-shrink:0;
-    width:25px;
-    height:25px;
-    border:2px solid #cfccdf;
-    border-radius:8px;
-    background:#fff;
-    color:#fff;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+  width:25px;
+  height:25px;
+  border:2px solid #d5d6e2;
+  border-radius:8px;
+  background:white;
+  flex-shrink:0;
 }
 
 .check.done{
-    background:var(--green);
-    border-color:var(--green);
+  background:var(--success);
+  border-color:var(--success);
+  color:white;
 }
 
-.task-name{
-    flex:1;
-    font-size:13px;
+.task-text{
+  flex:1;
 }
 
-.task-day{
-    color:var(--muted);
-    font-size:11px;
-}
-
-.empty{
-    text-align:center;
-    color:var(--muted);
-    padding:25px 10px;
-    font-size:13px;
-}
-
-/* ملخص الجدول */
-
-.week-mini{
-    display:grid;
-    gap:8px;
-}
-
-.week-mini-row{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:10px 12px;
-    border-radius:11px;
-    background:#f8f7fc;
-    font-size:12px;
-}
-
-.week-mini-row span{
-    color:var(--muted);
+.task small{
+  color:var(--muted);
 }
 
 /* =========================
-   الجدول
+   MINI PLANNER
 ========================= */
 
-.planner-info{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
-    flex-wrap:wrap;
-    margin-bottom:18px;
+.mini-days{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:8px;
 }
 
-.planner-info p{
-    color:var(--muted);
-    font-size:13px;
+.mini-day{
+  padding:12px 5px;
+  border:1px solid var(--border);
+  border-radius:13px;
+  text-align:center;
 }
 
-.planner-actions{
-    display:flex;
-    gap:8px;
+.mini-day strong{
+  display:block;
+  font-size:12px;
 }
 
-.lock-status{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    padding:9px 12px;
-    border-radius:11px;
-    background:#f5f4ff;
-    color:var(--primary);
-    font-size:12px;
-    font-weight:700;
+.mini-day span{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  margin-top:5px;
 }
 
-.friday-box{
-    background:#fff;
-    border-radius:18px;
-    padding:15px 18px;
-    margin-bottom:18px;
-    box-shadow:var(--shadow);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+/* =========================
+   PAGES
+========================= */
+
+.page-title{
+  margin-bottom:6px;
+  font-size:28px;
 }
 
-.friday-box p{
-    color:var(--muted);
-    font-size:12px;
-    margin-top:2px;
+.page-desc{
+  color:var(--muted);
+  margin-bottom:25px;
 }
 
-.toggle{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    font-size:13px;
-    font-weight:700;
+/* =========================
+   PLANNER
+========================= */
+
+.planner-tools{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:15px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
 }
 
-.toggle input{
-    width:18px;
-    height:18px;
-    accent-color:var(--primary);
+.switch{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
-.planner-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
+.switch input{
+  width:20px;
+  height:20px;
+  accent-color:var(--primary);
+}
+
+.primary-btn{
+  background:var(--primary);
+  color:white;
+  padding:11px 17px;
+  border-radius:12px;
+  font-weight:700;
+}
+
+.planner{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:12px;
 }
 
 .day-card{
-    background:#fff;
-    border-radius:19px;
-    padding:16px;
-    min-height:190px;
-    box-shadow:var(--shadow);
-    border:1px solid transparent;
-}
-
-.day-card.locked{
-    background:#fcfcfe;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:19px;
+  padding:14px;
+  min-height:220px;
 }
 
 .day-card.rest{
-    background:#f2f2f6;
+  background:#f8f7ff;
 }
 
-.day-title{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:14px;
+.day-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--border);
+  margin-bottom:12px;
 }
 
-.day-title strong{
-    font-size:15px;
+.day-head strong{
+  font-size:14px;
 }
 
-.day-title span{
-    color:var(--primary);
-    background:#efedff;
-    border-radius:8px;
-    padding:4px 7px;
-    font-size:10px;
+.day-head span{
+  font-size:10px;
+  color:var(--muted);
 }
 
-.subject-chip{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:7px;
-    background:#f1efff;
-    color:#574fb0;
-    padding:9px;
-    border-radius:10px;
-    margin-bottom:8px;
-    font-size:12px;
+.subject{
+  background:#f1efff;
+  color:#514ab4;
+  border-radius:10px;
+  padding:9px;
+  margin-bottom:8px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:12px;
 }
 
-.remove-subject{
-    border:0;
-    background:transparent;
-    color:#9e99bd;
-    font-size:17px;
+.subject button{
+  background:transparent;
+  color:#a19dc6;
+  font-size:16px;
 }
 
-.add-subject-btn{
-    width:100%;
-    border:1px dashed #bdb9dc;
-    background:#fff;
-    color:var(--primary);
-    border-radius:10px;
-    padding:8px;
-    font-size:11px;
-    font-weight:800;
+.add-subject{
+  width:100%;
+  padding:10px;
+  border:1px dashed #c9c6e8;
+  background:transparent;
+  color:var(--primary);
+  border-radius:10px;
+  margin-top:3px;
 }
 
-.locked-note{
-    color:var(--muted);
-    font-size:11px;
-    text-align:center;
-    padding:20px 4px;
+.rest-box{
+  text-align:center;
+  color:var(--muted);
+  padding-top:50px;
 }
 
-.rest-note{
-    text-align:center;
-    color:var(--muted);
-    padding:30px 0;
-    font-size:12px;
+.rest-box div{
+  font-size:32px;
+  margin-bottom:8px;
 }
 
 /* =========================
-   المواد
+   SUBJECTS
 ========================= */
 
-.subjects-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
+.subjects{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
 }
 
 .subject-card{
-    background:#fff;
-    border-radius:20px;
-    padding:20px;
-    box-shadow:var(--shadow);
+  background:white;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:22px;
+  transition:.2s;
+}
+
+.subject-card:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow);
 }
 
 .subject-icon{
-    width:48px;
-    height:48px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:14px;
-    background:#efedff;
-    font-size:22px;
-    margin-bottom:13px;
+  width:48px;
+  height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f0efff;
+  border-radius:15px;
+  font-size:22px;
+  margin-bottom:15px;
 }
 
 .subject-card h3{
-    font-size:16px;
+  font-size:16px;
+  margin-bottom:5px;
 }
 
 .subject-card p{
-    color:var(--muted);
-    font-size:11px;
-    margin-top:5px;
+  color:var(--muted);
+  font-size:11px;
 }
 
 /* =========================
-   التقدم
+   PROGRESS
 ========================= */
 
-.progress-main{
-    background:#fff;
-    border-radius:25px;
-    padding:32px;
-    text-align:center;
-    box-shadow:var(--shadow);
+.progress-card{
+  display:grid;
+  grid-template-columns:240px 1fr;
+  gap:35px;
+  align-items:center;
 }
 
-.progress-circle{
-    width:175px;
-    height:175px;
-    border-radius:50%;
-    margin:10px auto 22px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-    background:conic-gradient(var(--primary) 0deg,#ededf4 0deg);
+.circle{
+  width:190px;
+  height:190px;
+  border-radius:50%;
+  background:conic-gradient(var(--primary) 0deg,#eeeeF5 0deg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:auto;
 }
 
-.progress-circle::after{
-    content:"";
-    position:absolute;
-    width:140px;
-    height:140px;
-    border-radius:50%;
-    background:#fff;
+.circle-inner{
+  width:145px;
+  height:145px;
+  border-radius:50%;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
 }
 
-.progress-circle span{
-    position:relative;
-    z-index:2;
-    font-size:31px;
-    font-weight:800;
+.circle-inner strong{
+  font-size:32px;
 }
 
-.progress-bar{
-    height:11px;
-    background:#ededf3;
-    border-radius:20px;
-    overflow:hidden;
+.circle-inner span{
+  color:var(--muted);
+  font-size:11px;
+}
+
+.progress-line{
+  height:12px;
+  background:#eeeef5;
+  border-radius:20px;
+  overflow:hidden;
 }
 
 .progress-fill{
-    height:100%;
-    width:0;
-    background:linear-gradient(90deg,var(--primary),var(--pink));
-    transition:.4s;
-}
-
-.achievements{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:13px;
-    margin-top:20px;
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--primary),#a39df3);
+  border-radius:20px;
+  transition:.4s;
 }
 
 .achievement{
-    background:#f7f6fc;
-    border-radius:15px;
-    padding:17px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-top:20px;
+}
+
+.achievement div{
+  background:#f8f8fc;
+  border-radius:16px;
+  padding:18px;
+  text-align:center;
 }
 
 .achievement strong{
-    display:block;
-    color:var(--primary);
-    font-size:24px;
+  display:block;
+  font-size:25px;
+  color:var(--primary);
 }
 
 .achievement span{
-    color:var(--muted);
-    font-size:11px;
+  color:var(--muted);
+  font-size:11px;
 }
 
 /* =========================
-   الإشعارات
-========================= */
-
-.notice{
-    display:flex;
-    align-items:flex-start;
-    gap:12px;
-    padding:15px 0;
-    border-bottom:1px solid var(--border);
-}
-
-.notice:last-child{
-    border-bottom:0;
-}
-
-.notice-icon{
-    width:44px;
-    height:44px;
-    flex-shrink:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius:13px;
-    background:#efedff;
-}
-
-.notice strong{
-    font-size:13px;
-}
-
-.notice p{
-    color:var(--muted);
-    font-size:11px;
-    margin-top:3px;
-}
-
-/* =========================
-   Modal
+   MODAL
 ========================= */
 
 .modal{
-    position:fixed;
-    inset:0;
-    z-index:200;
-    background:rgba(25,24,42,.5);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:18px;
+  position:fixed;
+  inset:0;
+  background:rgba(25,25,45,.5);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:100;
 }
 
 .modal-box{
-    width:100%;
-    max-width:480px;
-    background:#fff;
-    border-radius:25px;
-    padding:25px;
-    box-shadow:0 25px 70px rgba(0,0,0,.2);
+  width:100%;
+  max-width:480px;
+  background:white;
+  border-radius:25px;
+  padding:25px;
 }
 
 .modal-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:20px;
 }
 
-.close-btn{
-    width:35px;
-    height:35px;
-    border:0;
-    border-radius:10px;
-    background:#f2f2f6;
-    font-size:20px;
-}
-
-.modal-box select{
-    width:100%;
-    padding:13px;
-    border:1px solid var(--border);
-    border-radius:13px;
-    margin-bottom:15px;
-    background:#fafaff;
-}
-
-/* Toast */
-
-.toast{
-    position:fixed;
-    bottom:25px;
-    left:50%;
-    transform:translateX(-50%) translateY(20px);
-    background:#27263a;
-    color:#fff;
-    padding:12px 18px;
-    border-radius:13px;
-    font-size:13px;
-    opacity:0;
-    pointer-events:none;
-    transition:.3s;
-    z-index:500;
-}
-
-.toast.show{
-    opacity:1;
-    transform:translateX(-50%) translateY(0);
+.close{
+  background:#f1f1f6;
+  width:35px;
+  height:35px;
+  border-radius:10px;
 }
 
 /* =========================
-   موبايل
+   EMPTY
+========================= */
+
+.empty{
+  text-align:center;
+  padding:30px 10px;
+  color:var(--muted);
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+  position:fixed;
+  bottom:25px;
+  left:50%;
+  transform:translate(-50%,30px);
+  background:#202336;
+  color:white;
+  padding:13px 20px;
+  border-radius:13px;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  z-index:200;
+  font-size:13px;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+/* =========================
+   MOBILE
 ========================= */
 
 @media(max-width:1050px){
+  .planner{
+    grid-template-columns:repeat(4,1fr);
+  }
 
-    .sidebar{
-        transform:translateX(110%);
-        transition:.25s;
-    }
+  .subjects{
+    grid-template-columns:repeat(3,1fr);
+  }
 
-    .sidebar.open{
-        transform:translateX(0);
-    }
-
-    .main{
-        margin-right:0;
-        padding:18px;
-    }
-
-    .mobile-menu{
-        display:block;
-    }
-
-    .stats{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .dashboard-grid{
-        grid-template-columns:1fr;
-    }
-
-    .planner-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .subjects-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
+  .two-col{
+    grid-template-columns:1fr;
+  }
 }
 
-@media(max-width:600px){
+@media(max-width:800px){
+  .sidebar{
+    transform:translateX(100%);
+    transition:.25s;
+  }
 
-    .setup{
-        padding:12px;
-    }
+  .sidebar.open{
+    transform:translateX(0);
+  }
 
-    .setup-card{
-        padding:25px 18px;
-    }
+  .main{
+    margin-right:0;
+  }
 
-    .school-title{
-        font-size:17px;
-    }
+  .mobile-menu{
+    display:block;
+  }
 
-    .platform-title{
-        font-size:27px;
-    }
+  .topbar{
+    padding:0 18px;
+  }
 
-    .welcome{
-        padding:22px;
-    }
+  .content{
+    padding:20px 15px;
+  }
 
-    .welcome h1{
-        font-size:22px;
-    }
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-    .stats{
-        gap:10px;
-    }
+  .planner{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-    .stat{
-        padding:15px;
-    }
+  .subjects{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-    .stat strong{
-        font-size:20px;
-    }
+  .progress-card{
+    grid-template-columns:1fr;
+  }
 
-    .planner-grid,
-    .subjects-grid{
-        grid-template-columns:1fr;
-    }
+  .setup-box{
+    padding:28px 20px;
+  }
 
-    .achievements{
-        grid-template-columns:1fr;
-    }
+  .setup-title{
+    font-size:24px;
+  }
+}
 
-    .planner-info{
-        align-items:flex-start;
-        flex-direction:column;
-    }
+@media(max-width:500px){
+  .hero{
+    padding:24px 20px;
+  }
 
-    .topbar{
-        gap:10px;
-    }
+  .hero h1{
+    font-size:23px;
+  }
 
-    .page-title{
-        font-size:18px;
-    }
+  .mini-days{
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  .planner{
+    grid-template-columns:1fr;
+  }
+
+  .subjects{
+    grid-template-columns:1fr;
+  }
+
+  .achievement{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- =====================================================
-     شاشة إعداد الطالبة
-===================================================== -->
+<!-- =========================
+     SETUP
+========================= -->
 
-<section class="setup" id="setupScreen">
+<section class="setup" id="setup">
 
-<div class="setup-card">
+  <div class="setup-box">
 
-<div class="school-mark">أ</div>
+    <div class="logo">
+      <div class="logo-icon">S</div>
+      <div>
+        <h1>SchoolHub</h1>
+        <p>منصتك الدراسية الذكية</p>
+      </div>
+    </div>
 
-<div class="school-title">
-مدرسة الأورمان الإعدادية الثانوية بنات
-</div>
+    <h2 class="setup-title">ابدئي تنظيم دراستك</h2>
 
-<div class="platform-title">
-SchoolHub
-</div>
+    <p class="setup-subtitle">
+      اختاري بياناتك الدراسية علشان نجهز لكِ المنصة المناسبة.
+    </p>
 
-<p class="platform-subtitle">
-منصتك الدراسية لتنظيم المذاكرة والمهام والمتابعة
-</p>
+    <div class="field">
+      <label>اسم الطالبة</label>
+      <input id="studentName" type="text" placeholder="اكتبي اسمك">
+    </div>
 
-<div class="form-group">
-<label>اسم الطالبة</label>
-<input id="studentName" type="text" placeholder="اكتبي اسمك">
-</div>
+    <div class="field">
+      <label>الصف الدراسي</label>
 
-<div class="form-group">
-<label>الصف الدراسي</label>
+      <select id="grade">
+        <option value="">اختاري الصف</option>
+        <option value="prep1">الصف الأول الإعدادي</option>
+        <option value="prep2">الصف الثاني الإعدادي</option>
+        <option value="prep3">الصف الثالث الإعدادي</option>
+        <option value="sec1">الصف الأول الثانوي</option>
+        <option value="sec2">الصف الثاني الثانوي — البكالوريا</option>
+        <option value="sec3">الصف الثالث الثانوي</option>
+      </select>
+    </div>
 
-<select id="gradeSelect">
-<option value="">اختاري الصف الدراسي</option>
+    <div class="field hidden" id="pathField">
 
-<option value="prep1">الصف الأول الإعدادي</option>
-<option value="prep2">الصف الثاني الإعدادي</option>
-<option value="prep3">الصف الثالث الإعدادي</option>
+      <label>المسار</label>
 
-<option value="sec1">الصف الأول الثانوي</option>
-<option value="sec2">الصف الثاني الثانوي — البكالوريا</option>
-<option value="sec3">الصف الثالث الثانوي</option>
+      <select id="path">
+        <option value="">اختاري المسار</option>
+        <option value="life">طب وعلوم الحياة</option>
+        <option value="engineering">هندسة وعلوم الحاسب</option>
+        <option value="business">إدارة أعمال</option>
+        <option value="arts">آداب وفنون</option>
+      </select>
 
-</select>
-</div>
+    </div>
 
-<div class="form-group hidden" id="pathGroup">
+    <div class="field hidden" id="electiveField">
 
-<label>اختاري مسار البكالوريا</label>
+      <label>المادة الاختيارية</label>
 
-<select id="pathSelect">
+      <select id="elective">
+        <option value="">اختاري المادة</option>
+      </select>
 
-<option value="">اختاري المسار</option>
+    </div>
 
-<option value="life">
-طب وعلوم الحياة
-</option>
+    <div class="field hidden" id="languageField">
 
-<option value="engineering">
-هندسة وعلوم الحاسب
-</option>
+      <label>اللغة الثانية</label>
 
-<option value="business">
-إدارة أعمال
-</option>
+      <select id="language">
+        <option value="">اختاري اللغة</option>
+        <option>فرنساوي</option>
+        <option>ألماني</option>
+        <option>إيطالي</option>
+        <option>إسباني</option>
+      </select>
 
-<option value="arts">
-آداب وفنون
-</option>
+    </div>
 
-</select>
+    <button class="start-btn" id="start">
+      دخول إلى SchoolHub
+    </button>
 
-</div>
+  </div>
 
-<div class="form-group hidden" id="electiveGroup">
-
-<label>اختاري المادة الاختيارية</label>
-
-<select id="electiveSelect">
-
-<option value="">
-اختاري المادة الاختيارية
-</option>
-
-</select>
-
-</div>
-
-<div class="form-group hidden" id="languageGroup">
-
-<label>اختاري اللغة الثانية</label>
-
-<select id="languageSelect">
-
-<option value="">اختاري اللغة</option>
-<option value="فرنساوي">فرنساوي</option>
-<option value="ألماني">ألماني</option>
-<option value="إيطالي">إيطالي</option>
-<option value="إسباني">إسباني</option>
-
-</select>
-
-</div>
-
-<button class="primary-btn" id="startBtn">
-دخول إلى منصتي ✨
-</button>
-
-</div>
 </section>
 
 
-<!-- =====================================================
-     التطبيق
-===================================================== -->
+<!-- =========================
+     APP
+========================= -->
 
 <div class="app hidden" id="app">
 
-<aside class="sidebar">
+  <aside class="sidebar" id="sidebar">
 
-<div class="brand">
+    <div class="side-logo">
+      <div class="side-logo-icon">S</div>
+      <div>
+        <strong>SchoolHub</strong>
+        <small>منصتك الدراسية</small>
+      </div>
+    </div>
 
-<div class="brand-mark">أ</div>
+    <div class="profile">
+      <div class="avatar" id="avatar">س</div>
+      <div>
+        <strong id="sideName">الطالبة</strong>
+        <small id="sideGrade">الصف الدراسي</small>
+      </div>
+    </div>
 
-<div>
-<strong>SchoolHub</strong>
-<small>الأورمان الإعدادية الثانوية بنات</small>
+    <nav class="nav">
+
+      <button class="active" data-page="home">
+        🏠 الرئيسية
+      </button>
+
+      <button data-page="planner">
+        📅 جدول المذاكرة
+      </button>
+
+      <button data-page="tasks">
+        ✓ قائمة المهام
+      </button>
+
+      <button data-page="subjects">
+        📚 موادي
+      </button>
+
+      <button data-page="progress">
+        📈 تقدمي
+      </button>
+
+      <button data-page="notifications">
+        🔔 الإشعارات
+      </button>
+
+    </nav>
+
+    <div class="side-bottom">
+      <button class="logout" id="logout">
+        تسجيل الخروج
+      </button>
+    </div>
+
+  </aside>
+
+
+  <main class="main">
+
+    <header class="topbar">
+
+      <div style="display:flex;align-items:center;gap:12px">
+
+        <button class="icon-btn mobile-menu" id="mobileMenu">
+          ☰
+        </button>
+
+        <h2 id="pageTitle">الرئيسية</h2>
+
+      </div>
+
+      <div class="top-actions">
+
+        <button class="icon-btn">
+          🔔
+        </button>
+
+        <div class="avatar" id="topAvatar">س</div>
+
+      </div>
+
+    </header>
+
+
+    <div class="content">
+
+      <!-- HOME -->
+
+      <section class="page active" id="page-home">
+
+        <div class="hero">
+
+          <small>أهلًا بيكي 👋</small>
+
+          <h1 id="welcome">
+            أهلاً بكِ في SchoolHub
+          </h1>
+
+          <p id="welcomeMeta">
+            منصتك لتنظيم الدراسة والمتابعة.
+          </p>
+
+        </div>
+
+
+        <div class="stats">
+
+          <div class="stat">
+            <div class="stat-icon">✓</div>
+            <strong id="taskPercent">0%</strong>
+            <span>إنجاز المهام</span>
+          </div>
+
+          <div class="stat">
+            <div class="stat-icon">📚</div>
+            <strong id="subjectCount">0</strong>
+            <span>المواد</span>
+          </div>
+
+          <div class="stat">
+            <div class="stat-icon">📅</div>
+            <strong id="studyDays">0</strong>
+            <span>أيام المذاكرة</span>
+          </div>
+
+          <div class="stat">
+            <div class="stat-icon">⭐</div>
+            <strong id="points">0</strong>
+            <span>نقاط الإنجاز</span>
+          </div>
+
+        </div>
+
+
+        <div class="two-col">
+
+          <div class="card">
+
+            <div class="card-head">
+
+              <h3>مهامك الحالية</h3>
+
+              <button data-jump="tasks">
+                عرض الكل
+              </button>
+
+            </div>
+
+            <div id="homeTasks"></div>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="card-head">
+              <h3>جدول الأسبوع</h3>
+
+              <button data-jump="planner">
+                تعديل
+              </button>
+            </div>
+
+            <div class="mini-days" id="miniDays"></div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- PLANNER -->
+
+      <section class="page" id="page-planner">
+
+        <h1 class="page-title">جدول المذاكرة</h1>
+
+        <p class="page-desc">
+          رتبي المواد على أيام الأسبوع بالطريقة اللي تناسبك — من غير مواعيد إجبارية.
+        </p>
+
+        <div class="planner-tools">
+
+          <label class="switch">
+            <input type="checkbox" id="fridayOff">
+            <span>الجمعة يوم راحة</span>
+          </label>
+
+          <button class="primary-btn" id="savePlanner">
+            حفظ الجدول
+          </button>
+
+        </div>
+
+        <div class="planner" id="planner"></div>
+
+      </section>
+
+
+      <!-- TASKS -->
+
+      <section class="page" id="page-tasks">
+
+        <h1 class="page-title">قائمة المهام</h1>
+
+        <p class="page-desc">
+          اكتبي كل اللي محتاجة تخلصيه، وحددي اليوم فقط. الوقت مفتوح ليكي.
+        </p>
+
+        <div class="card">
+
+          <div class="card-head">
+
+            <h3>مهامي</h3>
+
+            <button class="primary-btn" id="addTask">
+              + مهمة جديدة
+            </button>
+
+          </div>
+
+          <div id="tasks"></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- SUBJECTS -->
+
+      <section class="page" id="page-subjects">
+
+        <h1 class="page-title">موادي</h1>
+
+        <p class="page-desc" id="subjectsDescription">
+          المواد الخاصة بصفك الدراسي.
+        </p>
+
+        <div class="subjects" id="subjects"></div>
+
+      </section>
+
+
+      <!-- PROGRESS -->
+
+      <section class="page" id="page-progress">
+
+        <h1 class="page-title">تقدمي</h1>
+
+        <p class="page-desc">
+          تابعي انتظامك في تنظيم الدراسة وإنجاز المهام.
+        </p>
+
+        <div class="card progress-card">
+
+          <div>
+
+            <div class="circle" id="circle">
+
+              <div class="circle-inner">
+
+                <strong id="progressNumber">0%</strong>
+
+                <span>التقدم</span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div>
+
+            <h3 style="margin-bottom:10px">
+              مستوى تنظيمك الدراسي
+            </h3>
+
+            <p style="color:var(--muted);font-size:13px;margin-bottom:18px">
+              النسبة بتتحسب من إنجاز المهام وتنظيم أيام المذاكرة.
+            </p>
+
+            <div class="progress-line">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <div class="achievement">
+
+              <div>
+                <strong id="doneTasks">0</strong>
+                <span>مهام مكتملة</span>
+              </div>
+
+              <div>
+                <strong id="plannedDays">0</strong>
+                <span>أيام منظمة</span>
+              </div>
+
+              <div>
+                <strong id="progressPoints">0</strong>
+                <span>نقاط</span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- NOTIFICATIONS -->
+
+      <section class="page" id="page-notifications">
+
+        <h1 class="page-title">الإشعارات</h1>
+
+        <p class="page-desc">
+          آخر التنبيهات والملاحظات الخاصة بالمنصة.
+        </p>
+
+        <div id="notifications"></div>
+
+      </section>
+
+    </div>
+
+  </main>
+
 </div>
 
-</div>
 
-<div class="profile-card">
+<!-- TASK MODAL -->
 
-<strong id="sideName">الطالبة</strong>
+<div class="modal hidden" id="taskModal">
 
-<span id="sideGrade">الصف الدراسي</span>
+  <div class="modal-box">
 
-</div>
+    <div class="modal-head">
 
-<nav class="nav">
+      <h3>إضافة مهمة جديدة</h3>
 
-<button class="nav-btn active" data-page="home">
-🏠 الرئيسية
-</button>
+      <button class="close" id="closeModal">×</button>
 
-<button class="nav-btn" data-page="planner">
-📅 جدول المذاكرة
-</button>
+    </div>
 
-<button class="nav-btn" data-page="tasks">
-✓ قائمة المهام
-</button>
+    <div class="field">
 
-<button class="nav-btn" data-page="subjects">
-📚 موادي
-</button>
+      <label>اسم المهمة</label>
 
-<button class="nav-btn" data-page="progress">
-📊 تقدمي
-</button>
+      <input id="taskText" placeholder="مثال: مراجعة درس الرياضيات">
 
-<button class="nav-btn" data-page="notifications">
-🔔 الإشعارات
-</button>
+    </div>
 
-</nav>
+    <div class="field">
 
-<div class="sidebar-bottom">
+      <label>اليوم</label>
 
-<button class="logout-btn" id="logoutBtn">
-إعادة إعداد المنصة
-</button>
+      <select id="taskDay">
 
-</div>
+        <option>السبت</option>
+        <option>الأحد</option>
+        <option>الاثنين</option>
+        <option>الثلاثاء</option>
+        <option>الأربعاء</option>
+        <option>الخميس</option>
+        <option>الجمعة</option>
 
-</aside>
+      </select>
 
+    </div>
 
-<main class="main">
+    <button class="start-btn" id="confirmTask">
+      إضافة المهمة
+    </button>
 
-<header class="topbar">
-
-<div class="topbar-right">
-
-<button class="mobile-menu" id="mobileMenu">
-☰
-</button>
-
-<h1 class="page-title" id="pageTitle">
-الرئيسية
-</h1>
-
-</div>
-
-<div class="top-actions">
-
-<button class="icon-btn" id="notificationBtn">
-🔔
-<span class="notification-dot" id="notificationDot"></span>
-</button>
-
-<div class="avatar" id="topAvatar">
-أ
-</div>
-
-</div>
-
-</header>
-
-
-<!-- =====================================================
-     الرئيسية
-===================================================== -->
-
-<section class="page active" id="page-home">
-
-<div class="welcome">
-
-<h1>
-أهلًا يا <span id="welcomeName">طالبة</span> 👋
-</h1>
-
-<p id="welcomeMeta">
-مدرسة الأورمان الإعدادية الثانوية بنات
-</p>
+  </div>
 
 </div>
 
 
-<div class="stats">
+<!-- SUBJECT MODAL -->
 
-<div class="stat">
-<div class="stat-icon">✓</div>
-<strong id="statTasks">0%</strong>
-<span>إنجاز المهام</span>
+<div class="modal hidden" id="subjectModal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <h3>إضافة مادة للجدول</h3>
+
+      <button class="close" id="closeSubjectModal">×</button>
+
+    </div>
+
+    <div class="field">
+
+      <label>اختاري المادة</label>
+
+      <select id="subjectChoice"></select>
+
+    </div>
+
+    <button class="start-btn" id="confirmSubject">
+      إضافة للجدول
+    </button>
+
+  </div>
+
 </div>
 
-<div class="stat">
-<div class="stat-icon">📚</div>
-<strong id="statSubjects">0</strong>
-<span>المواد الدراسية</span>
-</div>
 
-<div class="stat">
-<div class="stat-icon">📅</div>
-<strong id="statDays">0</strong>
-<span>أيام منظمة</span>
-</div>
-
-<div class="stat">
-<div class="stat-icon">⭐</div>
-<strong id="statPoints">0</strong>
-<span>النقاط</span>
-</div>
-
-</div>
+<div class="toast" id="toast"></div>
 
 
-<div class="dashboard-grid">
+<script>
+/* ==========================================
+   DATA
+========================================== */
+
+const DAYS=[
+  "السبت",
+  "الأحد",
+  "الاثنين",
+  "الثلاثاء",
+  "الأربعاء",
+  "الخميس",
+  "الجمعة"
+];
+
+const SUBJECTS={
+  prep1:["عربي","English","دراسات","رياضيات","علوم","دين","ICT"],
+  prep2:["عربي","English","دراسات","رياضيات","علوم","دين","ICT"],
+  prep3:["عربي","English","دراسات","رياضيات","علوم","دين","ICT"],
+
+  sec1:[
+    "عربي",
+    "تاريخ",
+    "English",
+    "فلسفة ومنطق",
+    "دين",
+    "علوم متكاملة",
+    "رياضيات",
+    "برمجة"
+  ],
+
+  sec3:[
+    "عربي",
+    "English",
+    "تاريخ",
+    "رياضيات",
+    "فيزياء",
+    "كيمياء",
+    "لغة ثانية"
+  ]
+};
+
+const PATHS={
+  life:"طب وعلوم الحياة",
+  engineering:"هندسة وعلوم الحاسب",
+  business:"إدارة أعمال",
+  arts:"آداب وفنون"
+};
+
+const ELECTIVES={
+  life:["رياضيات","فيزياء"],
+  engineering:["برمجة","كيمياء"],
+  business:["محاسبة","إدارة أعمال"],
+  arts:["لغة ثانية","علم نفس"]
+};
+
+const GRADE_NAMES={
+  prep1:"الصف الأول الإعدادي",
+  prep2:"الصف الثاني الإعدادي",
+  prep3:"الصف الثالث الإعدادي",
+  sec1:"الصف الأول الثانوي",
+  sec2:"الصف الثاني الثانوي — البكالوريا",
+  sec3:"الصف الثالث الثانوي"
+};
+
+
+/* ==========================================
+   STATE
+========================================== */
+
+let state=
+JSON.parse(localStorage.getItem("schoolHub")) || null;
+
+let selectedPlannerDay=null;
+
+
+/* ==========================================
+   HELPERS
+========================================== */
+
+const $=id=>document.getElementById(id);
+
+function save(){
+  localStorage.setItem(
+    "schoolHub",
+    JSON.stringify(state)
+  );
+}
+
+function toast(message){
+
+  const box=$("toast");
+
+  box.textContent=message;
+
+  box.classList.add("show");
+
+  setTimeout(()=>{
+    box.classList.remove("show");
+  },2200);
+}
+
+function escapeHTML(text){
+
+  return String(text)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+
+/* ==========================================
+   GET SUBJECTS
+========================================== */
+
+function getSubjects(){
+
+  if(!state) return [];
+
+  if(state.grade!=="sec2"){
+    return SUBJECTS[state.grade] || [];
+  }
+
+  let result=[
+    "عربي",
+    "English",
+    "تاريخ"
+  ];
+
+  if(state.elective){
+    result.push(state.elective);
+  }
+
+  if(
+    state.path==="arts" &&
+    state.elective==="لغة ثانية" &&
+    state.language
+  ){
+    result.push(state.language);
+  }
+
+  return [...new Set(result)];
+}
+
+
+/* ==========================================
+   SETUP
+========================================== */
+
+$("grade").addEventListener("change",function(){
+
+  const grade=this.value;
+
+  $("pathField")
+    .classList.toggle(
+      "hidden",
+      grade!=="sec2"
+    );
+
+  $("electiveField")
+    .classList.add("hidden");
+
+  $("languageField")
+    .classList.add("hidden");
+
+});
+
+
+$("path").addEventListener("change",function(){
+
+  const path=this.value;
+
+  if(!path){
+
+    $("electiveField")
+      .classList.add("hidden");
+
+    return;
+  }
+
+  $("electiveField")
+    .classList.remove("hidden");
+
+  $("elective").innerHTML=
+    `<option value="">اختاري المادة</option>`+
+    ELECTIVES[path]
+      .map(x=>`<option>${x}</option>`)
+      .join("");
+
+});
+
+
+$("elective").addEventListener("change",function(){
+
+  const arts=
+    $("path").value==="arts";
+
+  const second=
+    this.value==="لغة ثانية";
+
+  $("languageField")
+    .classList.toggle(
+      "hidden",
+      !(arts && second)
+    );
+
+});
+
+
+$("start").addEventListener("click",function(){
+
+  const name=
+    $("studentName").value.trim();
+
+  const grade=
+    $("grade").value;
+
+  const path=
+    $("path").value;
+
+  const elective=
+    $("elective").value;
+
+  const language=
+    $("language").value;
+
+
+  if(!name){
+    toast("اكتبي اسمك الأول");
+    return;
+  }
+
+  if(!grade){
+    toast("اختاري الصف الدراسي");
+    return;
+  }
+
+  if(grade==="sec2" && !path){
+    toast("اختاري مسار البكالوريا");
+    return;
+  }
+
+  if(grade==="sec2" && !elective){
+    toast("اختاري المادة الاختيارية");
+    return;
+  }
+
+  if(
+    grade==="sec2" &&
+    path==="arts" &&
+    elective==="لغة ثانية" &&
+    !language
+  ){
+    toast("اختاري اللغة الثانية");
+    return;
+  }
+
+
+  const planner={};
+
+  DAYS.forEach(day=>{
+    planner[day]=[];
+  });
+
+
+  state={
+    name,
+    grade,
+    path:grade==="sec2"?path:null,
+    elective:grade==="sec2"?elective:null,
+    language:
+      grade==="sec2" &&
+      path==="arts" &&
+      elective==="لغة ثانية"
+        ?language
+        :null,
+
+    planner,
+    fridayOff:true,
+    tasks:[],
+    points:0
+  };
+
+
+  save();
+
+  showApp();
+
+  toast("تم تجهيز منصتك بنجاح ✨");
+
+});
+
+
+/* ==========================================
+   SHOW APP
+========================================== */
+
+function showApp(){
+
+  $("setup").classList.add("hidden");
+
+  $("app").classList.remove("hidden");
+
+  render();
+}
+
+
+/* ==========================================
+   RENDER ALL
+========================================== */
+
+function render(){
+
+  if(!state)return;
+
+  $("sideName").textContent=
+    state.name;
+
+  $("sideGrade").textContent=
+    GRADE_NAMES[state.grade];
+
+  $("avatar").textContent=
+    state.name.charAt(0);
+
+  $("topAvatar").textContent=
+    state.name.charAt(0);
+
+  $("welcome").textContent=
+    `أهلاً ${state.name} 👋`;
+
+  let meta=
+    GRADE_NAMES[state.grade];
+
+  if(state.path){
+    meta+=
+      " • "+
+      PATHS[state.path];
+  }
+
+  $("welcomeMeta").textContent=
+    meta;
+
+  renderHome();
+  renderPlanner();
+  renderTasks();
+  renderSubjects();
+  renderProgress();
+  renderNotifications();
+}
+
+
+/* ==========================================
+   HOME
+========================================== */
+
+function renderHome(){
+
+  const tasks=state.tasks;
+
+  const completed=
+    tasks.filter(t=>t.done).length;
+
+  const percentage=
+    tasks.length
+      ?Math.round(
+        completed/tasks.length*100
+      )
+      :0;
+
+
+  $("taskPercent").textContent=
+    percentage+"%";
+
+  $("subjectCount").textContent=
+    getSubjects().length;
+
+  $("studyDays").textContent=
+    DAYS.filter(
+      day=>state.planner[day].length
+    ).length;
+
+  $("points").textContent=
+    state.points;
+
+
+  const active=
+    tasks
+      .filter(t=>!t.done)
+      .slice(0,5);
+
+
+  $("homeTasks").innerHTML=
+    active.length
+      ?active.map(taskHTML).join("")
+      :`<div class="empty">
+          مفيش مهام حالية 🎉
+        </div>`;
+
+
+  $("miniDays").innerHTML=
+    DAYS.map(day=>{
+
+      const count=
+        state.planner[day].length;
+
+      const rest=
+        day==="الجمعة" &&
+        state.fridayOff;
+
+      return `
+        <div class="mini-day">
+
+          <strong>${day}</strong>
+
+          <span>
+            ${
+              rest
+              ?"راحة 🌿"
+              :count+" مواد"
+            }
+          </span>
+
+        </div>
+      `;
+
+    }).join("");
+
+}
+
+
+/* ==========================================
+   TASK HTML
+========================================== */
+
+function taskHTML(task){
+
+  return `
+    <div class="task">
+
+      <button
+        class="check ${task.done?"done":""}"
+        onclick="toggleTask('${task.id}')"
+      >
+        ${task.done?"✓":""}
+      </button>
+
+      <span class="task-text">
+        ${escapeHTML(task.text)}
+      </span>
+
+      <small>
+        ${task.day}
+      </small>
+
+      <button
+        onclick="deleteTask('${task.id}')"
+        style="
+          background:transparent;
+          color:#d35b67;
+          font-size:18px;
+        "
+      >
+        ×
+      </button>
+
+    </div>
+  `;
+}
+
+
+/* ==========================================
+   TASKS
+========================================== */
+
+function renderTasks(){
+
+  const list=
+    state.tasks;
+
+  $("tasks").innerHTML=
+    list.length
+      ?list.map(taskHTML).join("")
+      :`
+        <div class="empty">
+          لسه مفيش مهام.
+          <br>
+          أضيفي أول مهمة وابدئي تنظيم يومك ✨
+        </div>
+      `;
+}
+
+
+function toggleTask(id){
+
+  const task=
+    state.tasks.find(t=>t.id===id);
+
+  if(!task)return;
+
+  task.done=!task.done;
+
+  if(task.done){
+    state.points+=5;
+  }else{
+    state.points=
+      Math.max(
+        0,
+        state.points-5
+      );
+  }
+
+  save();
+
+  render();
+
+  toast(
+    task.done
+      ?"أحسنتِ! المهمة خلصت ⭐"
+      :"رجعت المهمة للقائمة"
+  );
+}
+
+
+function deleteTask(id){
+
+  state.tasks=
+    state.tasks.filter(
+      t=>t.id!==id
+    );
+
+  save();
+
+  render();
+
+  toast("تم حذف المهمة");
+}
+
+
+/* ==========================================
+   TASK MODAL
+========================================== */
+
+$("addTask").addEventListener("click",()=>{
+
+  $("taskModal")
+    .classList.remove("hidden");
+
+  $("taskText").focus();
+
+});
+
+
+$("closeModal").addEventListener("click",()=>{
+
+  $("taskModal")
+    .classList.add("hidden");
+
+});
+
+
+$("confirmTask").addEventListener("click",()=>{
+
+  const text=
+    $("taskText").value.trim();
+
+  const day=
+    $("taskDay").value;
+
+  if(!text){
+    toast("اكتبي اسم المهمة");
+    return;
+  }
+
+
+  state.tasks.unshift({
+
+    id:Date.now().toString(),
+
+    text,
+
+    day,
+
+    done:false
+
+  });
+
+
+  $("taskText").value="";
+
+  $("taskModal")
+    .classList.add("hidden");
+
+  save();
+
+  render();
+
+  toast("تمت إضافة المهمة ✓");
+
+});
+
+
+/* ==========================================
+   PLANNER
+========================================== */
+
+function renderPlanner(){
+
+  $("fridayOff").checked=
+    state.fridayOff;
+
+
+  $("planner").innerHTML=
+    DAYS.map(day=>{
+
+      const rest=
+        day==="الجمعة" &&
+        state.fridayOff;
+
+      const subjects=
+        state.planner[day] || [];
+
+
+      return `
+        <div class="day-card ${rest?"rest":""}">
+
+          <div class="day-head">
+
+            <strong>${day}</strong>
+
+            <span>
+              ${rest?"راحة":"مرن"}
+            </span>
+
+          </div>
+
+          ${
+            rest
+
+            ?`
+              <div class="rest-box">
+
+                <div>🌿</div>
+
+                يوم راحة
+
+              </div>
+            `
+
+            :
+
+            `
+              ${
+                subjects.length
+
+                ?subjects.map(
+                  (subject,index)=>`
+
+                    <div class="subject">
+
+                      <span>
+                        ${escapeHTML(subject)}
+                      </span>
+
+                      <button
+                        onclick="
+                          removeSubject('${day}',${index})
+                        "
+                      >
+                        ×
+                      </button>
+
+                    </div>
+                  `
+                ).join("")
+
+                :
+
+                `<div
+                  style="
+                    color:#aaa;
+                    font-size:11px;
+                    margin-bottom:10px;
+                  "
+                >
+                  لم تتم إضافة مواد
+                </div>`
+              }
+
+              <button
+                class="add-subject"
+                onclick="openSubjectModal('${day}')"
+              >
+                + إضافة مادة
+              </button>
+            `
+          }
+
+        </div>
+      `;
+
+    }).join("");
+}
+
+
+/* ==========================================
+   SUBJECT MODAL
+========================================== */
+
+function openSubjectModal(day){
+
+  selectedPlannerDay=day;
+
+  $("subjectChoice").innerHTML=
+    `<option value="">اختاري المادة</option>`+
+    getSubjects()
+      .map(
+        subject=>
+          `<option>${subject}</option>`
+      )
+      .join("");
+
+  $("subjectModal")
+    .classList.remove("hidden");
+}
+
+
+$("closeSubjectModal")
+.addEventListener("click",()=>{
+
+  $("subjectModal")
+    .classList.add("hidden");
+
+});
+
+
+$("confirmSubject")
+.addEventListener("click",()=>{
+
+  const subject=
+    $("subjectChoice").value;
+
+  if(!subject){
+    toast("اختاري المادة");
+    return;
+  }
+
+  if(
+    state.planner[selectedPlannerDay]
+      .includes(subject)
+  ){
+
+    toast("المادة موجودة بالفعل في اليوم ده");
+    return;
+  }
+
+  state.planner[selectedPlannerDay]
+    .push(subject);
+
+  save();
+
+  $("subjectModal")
+    .classList.add("hidden");
+
+  render();
+
+  toast("اتضافت المادة للجدول ✓");
+
+});
+
+
+function removeSubject(day,index){
+
+  state.planner[day]
+    .splice(index,1);
+
+  save();
+
+  render();
+
+}
+
+
+/* ==========================================
+   FRIDAY
+========================================== */
+
+$("fridayOff")
+.addEventListener("change",function(){
+
+  state.fridayOff=
+    this.checked;
+
+  if(this.checked){
+
+    state.planner["الجمعة"]=[];
+  }
+
+  save();
+
+  render();
+
+  toast(
+    this.checked
+      ?"الجمعة بقت يوم راحة 🌿"
+      :"الجمعة رجعت متاحة"
+  );
+
+});
+
+
+$("savePlanner")
+.addEventListener("click",()=>{
+
+  save();
+
+  toast("تم حفظ جدولك الأسبوعي ✓");
+
+});
+
+
+/* ==========================================
+   SUBJECTS
+========================================== */
+
+function renderSubjects(){
+
+  const subjects=
+    getSubjects();
+
+
+  if(state.grade==="sec2"){
+
+    $("subjectsDescription").textContent=
+      `المواد الخاصة بمسار ${PATHS[state.path]} حسب اختياراتك.`;
+
+  }else{
+
+    $("subjectsDescription").textContent=
+      "المواد الخاصة بصفك الدراسي.";
+
+  }
+
+
+  const icons=[
+    "📚",
+    "📖",
+    "➗",
+    "🧪",
+    "💻",
+    "🌍",
+    "📝",
+    "🎨",
+    "🔬",
+    "🌐"
+  ];
+
+
+  $("subjects").innerHTML=
+    subjects.map(
+      (subject,index)=>`
+
+        <div class="subject-card">
+
+          <div class="subject-icon">
+            ${icons[index%icons.length]}
+          </div>
+
+          <h3>
+            ${escapeHTML(subject)}
+          </h3>
+
+          <p>
+            مادة ضمن خطتك الدراسية
+          </p>
+
+        </div>
+      `
+    ).join("");
+}
+
+
+/* ==========================================
+   PROGRESS
+========================================== */
+
+function calculateProgress(){
+
+  const tasks=
+    state.tasks;
+
+  const taskPart=
+    tasks.length
+      ?tasks.filter(t=>t.done).length/tasks.length
+      :0;
+
+
+  const days=
+    DAYS.filter(
+      day=>state.planner[day].length>0
+    ).length;
+
+
+  const dayPart=
+    Math.min(days/6,1);
+
+
+  return Math.round(
+    (taskPart*.65+
+    dayPart*.35)*100
+  );
+}
+
+
+function renderProgress(){
+
+  const percent=
+    calculateProgress();
+
+
+  $("progressNumber").textContent=
+    percent+"%";
+
+
+  $("progressFill").style.width=
+    percent+"%";
+
+
+  $("circle").style.background=
+    `conic-gradient(
+      var(--primary)
+      ${percent*3.6}deg,
+      #eeeef5
+      ${percent*3.6}deg
+    )`;
+
+
+  $("doneTasks").textContent=
+    state.tasks.filter(t=>t.done).length;
+
+
+  $("plannedDays").textContent=
+    DAYS.filter(
+      day=>state.planner[day].length
+    ).length;
+
+
+  $("progressPoints").textContent=
+    state.points;
+
+}
+
+
+/* ==========================================
+   NOTIFICATIONS
+========================================== */
+
+function renderNotifications(){
+
+  $("notifications").innerHTML=`
+
+    <div class="card">
+
+      <div class="task">
+
+        <span style="font-size:23px">📢</span>
+
+        <div class="task-text">
+
+          <strong>
+            أهلًا بيكي في SchoolHub
+          </strong>
+
+          <small style="display:block">
+            ابدئي بإضافة موادك إلى جدول الأسبوع.
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <div class="task">
+
+        <span style="font-size:23px">🌿</span>
+
+        <div class="task-text">
+
+          <strong>
+            جدولك مرن
+          </strong>
+
+          <small style="display:block">
+            المنصة لا تفرض عليكِ وقتًا معينًا للمذاكرة.
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <div class="task">
+
+        <span style="font-size:23px">✨</span>
+
+        <div class="task-text">
+
+          <strong>
+            حافظي على الاستمرارية
+          </strong>
+
+          <small style="display:block">
+            أنجزي المهام الصغيرة واحدة واحدة.
+          </small>
+
+        </div>
+
+      </div>
+
+    </div>
+  `;
+}
+
+
+/* ==========================================
+   NAVIGATION
+========================================== */
+
+const titles={
+  home:"الرئيسية",
+  planner:"جدول المذاكرة",
+  tasks:"قائمة المهام",
+  subjects:"موادي",
+  progress:"تقدمي",
+  notifications:"الإشعارات"
+};
+
+
+function goPage(page){
+
+  document
+    .querySelectorAll(".page")
+    .forEach(p=>{
+      p.classList.remove("active");
+    });
+
+
+  $("page-"+page)
+    .classList.add("active");
+
+
+  document
+    .querySelectorAll(".nav button")
+    .forEach(button=>{
+      button.classList.toggle(
+        "active",
+        button.dataset.page===page
+      );
+    });
+
+
+  $("pageTitle").textContent=
+    titles[page];
+
+
+  $("sidebar")
+    .classList.remove("open");
+
+  window.scrollTo(0,0);
+
+}
+
+
+document
+  .querySelectorAll(".nav button")
+  .forEach(button=>{
+
+    button.addEventListener(
+      "click",
+      ()=>{
+        goPage(button.dataset.page);
+      }
+    );
+
+  });
+
+
+document
+  .querySelectorAll("[data-jump]")
+  .forEach(button=>{
+
+    button.addEventListener(
+      "click",
+      ()=>{
+        goPage(button.dataset.jump);
+      }
+    );
+
+  });
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+$("mobileMenu")
+.addEventListener("click",()=>{
+
+  $("sidebar")
+    .classList.toggle("open");
+
+});
+
+
+/* ==========================================
+   LOGOUT
+========================================== */
+
+$("logout")
+.addEventListener("click",()=>{
+
+  const confirmLogout=
+    confirm(
+      "هل تريدين تسجيل الخروج؟"
+    );
+
+  if(!confirmLogout)return;
+
+  localStorage.removeItem("schoolHub");
+
+  location.reload();
+
+});
+
+
+/* ==========================================
+   START
+========================================== */
+
+if(state){
+
+  showApp();
+
+}else{
+
+  $("setup")
+    .classList.remove("hidden");
+
+  $("app")
+    .classList.add("hidden");
+
+}
+
+</script>
+
+</body>
+</html>
